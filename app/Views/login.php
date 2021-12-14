@@ -16,7 +16,7 @@
 
 <body>
     <div class="tes" style="background-image: url(/img/4.jpg); height:625px; padding-left:200px">
-        <h1 class="tes" style="padding-top: 150px; ">Silahkan Login</h1>
+        <h1 class="tes" style="padding-top: 130px; ">Silahkan Login</h1>
 
         <form action="/login/validasi" method="post" enctype="multipart/form-data">
 
