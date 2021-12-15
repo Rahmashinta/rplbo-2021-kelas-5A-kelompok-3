@@ -20,7 +20,7 @@ class SuratKeluar extends BaseController
             'suratkeluar' => $this->suratKeluarModel->getSuratKeluar()
         ];
 
-        return view('suratkeluar/index', $data);
+        return view('halamansuratkeluar/index', $data);
     }
 
     public function create()
@@ -30,7 +30,7 @@ class SuratKeluar extends BaseController
             'title' => 'Form Tambah Data Surat Keluar',
             'validation' => \Config\Services::validation()
         ];
-        return view('suratkeluar/create', $data);
+        return view('halamansuratkeluar/create', $data);
     }
 
     public function save()
@@ -84,7 +84,7 @@ class SuratKeluar extends BaseController
             'validation' => \Config\Services::validation(),
             'suratkeluar' => $this->suratKeluarModel->getSuratKeluarById($id)
         ];
-        return view('suratkeluar/edit', $data);
+        return view('halamansuratkeluar/edit', $data);
     }
 
     public function update()

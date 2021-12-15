@@ -24,7 +24,7 @@ class SuratMasukStaf extends BaseController
         // $komiModel = new KomikModel();
 
 
-        return view('suratmasukstaf/index', $data);
+        return view('halamansuratmasukstaf/index', $data);
     }
 
     public function delete($id)
@@ -42,7 +42,7 @@ class SuratMasukStaf extends BaseController
             'validation' => \Config\Services::validation(),
             'suratmasuk' => $this->suratMasukModel->getSuratMasukById($id)
         ];
-        return view('suratmasukstaf/edit', $data);
+        return view('halamansuratmasukstaf/edit', $data);
     }
 
     public function update()

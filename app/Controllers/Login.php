@@ -21,7 +21,7 @@ class Login extends BaseController
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
             'pengguna' => $this->penggunaModel->getPengguna()
         ];
-        return view('login.php', $data);
+        return view('HalamanLogin.php', $data);
     }
     public function validasi()
     {

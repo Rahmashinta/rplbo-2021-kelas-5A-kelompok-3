@@ -10,6 +10,6 @@ class Welcome extends BaseController
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
-        return view('welcome.php', $data);
+        return view('HalamanUtama.php', $data);
     }
 }

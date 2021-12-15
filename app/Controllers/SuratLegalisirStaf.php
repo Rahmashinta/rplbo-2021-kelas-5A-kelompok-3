@@ -20,7 +20,7 @@ class SuratLegalisirStaf extends BaseController
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisir()
         ];
 
-        return view('suratlegalisirstaf/index', $data);
+        return view('halamansuratlegalisirstaf/index', $data);
     }
 
     public function delete($id)
@@ -38,7 +38,7 @@ class SuratLegalisirStaf extends BaseController
             'validation' => \Config\Services::validation(),
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisirById($id)
         ];
-        return view('suratlegalisirstaf/edit', $data);
+        return view('halamansuratlegalisirstaf/edit', $data);
     }
 
     public function update()

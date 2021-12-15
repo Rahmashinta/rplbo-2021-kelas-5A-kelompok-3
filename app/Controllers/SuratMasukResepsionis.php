@@ -24,7 +24,7 @@ class SuratMasukResepsionis extends BaseController
         // $komiModel = new KomikModel();
 
 
-        return view('suratmasukresepsionis/index', $data);
+        return view('halamansuratmasukresepsionis/index', $data);
     }
 
     public function create()
@@ -34,7 +34,7 @@ class SuratMasukResepsionis extends BaseController
             'title' => 'Form Tambah Data Surat Masuk',
             'validation' => \Config\Services::validation()
         ];
-        return view('suratmasukresepsionis/create', $data);
+        return view('halamansuratmasukresepsionis/create', $data);
     }
 
     public function save()

@@ -24,7 +24,7 @@ class DisposisiSuratMasuk extends BaseController
         // $komiModel = new KomikModel();
 
 
-        return view('disposisisuratmasuk/index', $data);
+        return view('halamandisposisisuratmasuk/index', $data);
     }
 
     public function create()
@@ -34,7 +34,7 @@ class DisposisiSuratMasuk extends BaseController
             'title' => 'Form Tambah Data Disposisi Surat Masuk',
             'validation' => \Config\Services::validation()
         ];
-        return view('disposisisuratmasuk/create', $data);
+        return view('halamandisposisisuratmasuk/create', $data);
     }
 
     public function save()
@@ -89,7 +89,7 @@ class DisposisiSuratMasuk extends BaseController
             'validation' => \Config\Services::validation(),
             'disposisisuratmasuk' => $this->disposisiSuratMasukModel->getDisposisiSuratMasukById($id)
         ];
-        return view('disposisisuratmasuk/edit', $data);
+        return view('halamandisposisisuratmasuk/edit', $data);
     }
 
     public function update()

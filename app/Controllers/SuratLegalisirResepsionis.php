@@ -20,7 +20,7 @@ class SuratLegalisirResepsionis extends BaseController
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisir()
         ];
 
-        return view('suratlegalisirresepsionis/index', $data);
+        return view('halamansuratlegalisirresepsionis/index', $data);
     }
 
     public function create()
@@ -30,7 +30,7 @@ class SuratLegalisirResepsionis extends BaseController
             'title' => 'Form Tambah Data Surat Legalisir',
             'validation' => \Config\Services::validation()
         ];
-        return view('suratlegalisirresepsionis/create', $data);
+        return view('halamansuratlegalisirresepsionis/create', $data);
     }
 
     public function save()
