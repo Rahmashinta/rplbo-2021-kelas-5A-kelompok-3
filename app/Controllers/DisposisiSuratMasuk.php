@@ -103,8 +103,8 @@ class DisposisiSuratMasuk extends BaseController
 
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratkeluar' => $disposisi->paginate(6, 'suratkeluar'),
+            'disposisisuratmasuk' => $disposisi->paginate(6, 'suratkeluar'),
         ];
-        return view('halamandisposisisuratmasuk/HalamanDDisposisiSratMasuk', $data);
+        return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
     }
 }
