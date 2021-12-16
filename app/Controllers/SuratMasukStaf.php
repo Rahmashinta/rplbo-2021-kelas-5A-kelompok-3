@@ -19,12 +19,7 @@ class SuratMasukStaf extends BaseController
             'title' => 'Surat Masuk',
             'suratmasuk' => $this->suratMasukModel->getSuratMasuk()
         ];
-
-        // $komiModel = new \App\Models\KomikModel();
-        // $komiModel = new KomikModel();
-
-
-        return view('halamansuratmasukstaf/index', $data);
+        return view('halamansuratmasukstaf/HalamanSuratMasuk', $data);
     }
 
     public function delete($id)
@@ -42,51 +37,19 @@ class SuratMasukStaf extends BaseController
             'validation' => \Config\Services::validation(),
             'suratmasuk' => $this->suratMasukModel->getSuratMasukById($id)
         ];
-        return view('halamansuratmasukstaf/edit', $data);
+        return view('halamansuratmasukstaf/FormEditSuratMasuk', $data);
     }
 
     public function update()
     {
-        // cek asal surat
-
-        // $suratmasukLama = $this->suratmasukModel->getSuratMasuk();
-        // if ($suratmasukLama['asalsurat'] == $this->request->getVar('asalsurat')) {
-        //     $rule_judul = 'required';
-        // } else {
-        //     $rule_judul = 'required|is_unique[komik.judul]';
-        // }
-
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => $rule_judul,
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.'
-        //         ]
-        //     ]
-        // ])) {
-
-        //     return redirect()->to('suratmasuk/edit')->withInput();
-        // }
-
-        // $this->suratMasukModel->save([
-        //     'id' => $id,
-        //     'asalSurat' => $this->request->getVar('asalSurat'),
-        //     'tanggalSurat' => $this->request->getVar('tanggalSurat'),
-        //     'perihalSurat' => $this->request->getVar('perihalSurat')
-        // ]);
-
-        // session()->setFlashdata('pesan', 'Data berhasil diubah');
-
-        // return redirect()->to('suratmasuk');
-
         $fileSurat = $this->request->getFile('fileSurat');
-        //cek gambar, apakah tetap gambar lama
+        //cek file, apakah tetap file lama
         if ($fileSurat->getError() == 4) {
             $namaSurat = $this->request->getVar('fileLama');
         } else {
-            //generate nama file random
+            //generate nama file 
             $namaSurat = $fileSurat->getName();
-            //pindahkan gambar
+            //pindahkan file
             $fileSurat->move('file', $namaSurat);
         }
 
@@ -99,8 +62,23 @@ class SuratMasukStaf extends BaseController
             'fileSurat' => $namaSurat
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
+        session()->setFlashdata('pesan', 'Data berhasil diedit');
 
         return redirect()->to('suratmasukstaf');
+    }
+    public function cari()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $suratmasuk = $this->suratMasukModel->search($keyword);
+        } else {
+            $suratmasuk = $this->suratMasukModel;
+        }
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratmasuk' => $suratmasuk->paginate(6, 'suratmasuk'),
+        ];
+        return view('halamansuratmasukstaf/index', $data);
     }
 }

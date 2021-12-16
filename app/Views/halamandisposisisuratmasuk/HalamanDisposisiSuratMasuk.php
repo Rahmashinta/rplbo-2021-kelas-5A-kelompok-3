@@ -7,13 +7,21 @@
         <div class="col">
             <a href="/disposisisuratmasuk/create" class="btn btn-primary mt-3">Tambah Disposisi Surat Masuk</a>
 
-            <h1 class="mt-2">Daftar Disposisi Surat Masuk</h1>
-
             <?php if (session()->getFlashData('pesan')) : ?>
                 <div class="alert alert-success" role="alert">
                     <?= session()->getFlashdata('pesan'); ?>
                 </div>
             <?php endif; ?>
+
+            <div class="cari" style="padding-top: 15px;">
+                <form action="disposisisuratmasuk/cari" method="post">
+                    <div class="input-group mb-3">
+                        <h2 style="padding-right: 400px;">Daftar Disposisi Surat Masuk</h2>
+                        <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
+                        <button class="btn btn-outline-secondary btn-warning" type="submit" name="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
 
             <div class="table">
                 <table class="table" style="text-align:center;">

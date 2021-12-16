@@ -21,4 +21,8 @@ class SuratLegalisirModel extends Model
         }
         return $this->where(['id' => $id])->first();
     }
+    public function search($keyword)
+    {
+        return $this->table('suratlegalisir')->like('nama', $keyword)->orlike('kelas', $keyword)->orlike('tahunAjaran', $keyword)->orlike('fileSurat', $keyword);
+    }
 }

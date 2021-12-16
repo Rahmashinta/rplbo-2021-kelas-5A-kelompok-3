@@ -19,42 +19,20 @@ class SuratMasukResepsionis extends BaseController
             'title' => 'Surat Masuk',
             'suratmasuk' => $this->suratMasukModel->getSuratMasuk()
         ];
-
-        // $komiModel = new \App\Models\KomikModel();
-        // $komiModel = new KomikModel();
-
-
-        return view('halamansuratmasukresepsionis/index', $data);
+        return view('halamansuratmasukresepsionis/HalamanSuratMasuk', $data);
     }
 
     public function create()
     {
-        // session();
         $data = [
             'title' => 'Form Tambah Data Surat Masuk',
             'validation' => \Config\Services::validation()
         ];
-        return view('halamansuratmasukresepsionis/create', $data);
+        return view('halamansuratmasukresepsionis/FormTambahSuratMasuk', $data);
     }
 
     public function save()
     {
-        // validasi input
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => 'required[suratmasuk.asalsurat]',
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.',
-        //         ]
-        //     ]
-        // ])) {
-
-        //     $validation = \Config\Services::validation();
-
-        //     return redirect()->to('suratmasuk/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('suratmasuk/create')->withInput();
-        // }
-
         $this->suratMasukModel->save([
             'asalSurat' => $this->request->getVar('asalSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),

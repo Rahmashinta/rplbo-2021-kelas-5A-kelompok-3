@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templateResepsionis'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container">
@@ -6,14 +6,13 @@
         <div class="col-8">
             <h2>Form Tambah Surat Masuk</h2>
 
-            <form action="/suratmasuk/save" method="post" enctype="multipart/form-data">
+            <form action="/suratmasukresepsionis/save" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
-                    <label for="asalSurat" class="form-label">Asal Surat</label>
-                    <input type="teks" class="form-control" id="asalSurat" name="asalSurat" autofocus>
-
+                    <label for="asalSurat" class="form-label ">Asal Surat</label>
+                    <input type="teks" class="form-control" id="asalSurat" name="asalSurat" autofocus value="<?= old('asalSurat'); ?>">
                 </div>
 
                 <div class="mb-3">

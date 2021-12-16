@@ -12,19 +12,17 @@ class SuratMasukModel extends Model
 
     public function getSuratMasuk()
     {
-        // return $this->table('suratmasuk');
         return $this->findAll();
     }
-    // public function getSuratMasukById($id)
-    // {
-    //     //return $this->table('suratmasuk')->where('id', $id);
-    //     return $this->findAll($id);
-    // }
     public function getSuratMasukById($id)
     {
         if ($id == null) {
             return $this->findAll();
         }
         return $this->where(['id' => $id])->first();
+    }
+    public function search($keyword)
+    {
+        return $this->table('suratmasuk')->like('asalSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
     }
 }

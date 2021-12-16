@@ -20,7 +20,7 @@ class SuratLegalisirResepsionis extends BaseController
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisir()
         ];
 
-        return view('halamansuratlegalisirresepsionis/index', $data);
+        return view('halamansuratlegalisirresepsionis/HalamanSuratLegalisir', $data);
     }
 
     public function create()
@@ -30,26 +30,11 @@ class SuratLegalisirResepsionis extends BaseController
             'title' => 'Form Tambah Data Surat Legalisir',
             'validation' => \Config\Services::validation()
         ];
-        return view('halamansuratlegalisirresepsionis/create', $data);
+        return view('halamansuratlegalisirresepsionis/FormTambahSuratLegalisir', $data);
     }
 
     public function save()
     {
-        // validasi input
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => 'required[suratmasuk.asalsurat]',
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.',
-        //         ]
-        //     ]
-        // ])) {
-
-        //     $validation = \Config\Services::validation();
-
-        //     return redirect()->to('suratmasuk/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('suratmasuk/create')->withInput();
-        // }
 
         $fileSurat = $this->request->getFile('fileSurat');
 

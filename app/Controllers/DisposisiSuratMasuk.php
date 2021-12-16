@@ -19,12 +19,7 @@ class DisposisiSuratMasuk extends BaseController
             'title' => 'Disposisi Surat Masuk',
             'disposisisuratmasuk' => $this->disposisiSuratMasukModel->getDisposisiSuratMasuk()
         ];
-
-        // $komiModel = new \App\Models\KomikModel();
-        // $komiModel = new KomikModel();
-
-
-        return view('halamandisposisisuratmasuk/index', $data);
+        return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
     }
 
     public function create()
@@ -34,28 +29,11 @@ class DisposisiSuratMasuk extends BaseController
             'title' => 'Form Tambah Data Disposisi Surat Masuk',
             'validation' => \Config\Services::validation()
         ];
-        return view('halamandisposisisuratmasuk/create', $data);
+        return view('halamandisposisisuratmasuk/FormTambahDisposisiSuratMasuk', $data);
     }
 
     public function save()
     {
-        // validasi input
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => 'required[suratmasuk.asalsurat]',
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.',
-        //         ]
-        //     ]
-        // ])) {
-
-        //     $validation = \Config\Services::validation();
-
-        //     return redirect()->to('suratmasuk/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('suratmasuk/create')->withInput();
-        // }
-
-
         $this->disposisiSuratMasukModel->save([
             'nomorSurat' => $this->request->getVar('nomorSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),
@@ -89,44 +67,11 @@ class DisposisiSuratMasuk extends BaseController
             'validation' => \Config\Services::validation(),
             'disposisisuratmasuk' => $this->disposisiSuratMasukModel->getDisposisiSuratMasukById($id)
         ];
-        return view('halamandisposisisuratmasuk/edit', $data);
+        return view('halamandisposisisuratmasuk/FormEditDisposisiSuratMasuk', $data);
     }
 
     public function update()
     {
-        // cek asal surat
-
-        // $suratmasukLama = $this->suratmasukModel->getSuratMasuk();
-        // if ($suratmasukLama['asalsurat'] == $this->request->getVar('asalsurat')) {
-        //     $rule_judul = 'required';
-        // } else {
-        //     $rule_judul = 'required|is_unique[komik.judul]';
-        // }
-
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => $rule_judul,
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.'
-        //         ]
-        //     ]
-        // ])) {
-
-        //     return redirect()->to('suratmasuk/edit')->withInput();
-        // }
-
-        // $this->suratMasukModel->save([
-        //     'id' => $id,
-        //     'asalSurat' => $this->request->getVar('asalSurat'),
-        //     'tanggalSurat' => $this->request->getVar('tanggalSurat'),
-        //     'perihalSurat' => $this->request->getVar('perihalSurat')
-        // ]);
-
-        // session()->setFlashdata('pesan', 'Data berhasil diubah');
-
-        // return redirect()->to('suratmasuk');
-
-
 
         $this->disposisiSuratMasukModel->save([
             'id' => $this->request->getVar('id'),
@@ -145,5 +90,21 @@ class DisposisiSuratMasuk extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('disposisisuratmasuk');
+    }
+
+    public function cari()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $disposisi = $this->disposisiSuratMasukModel->search($keyword);
+        } else {
+            $disposisi = $this->disposisiSuratMasukModel;
+        }
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratkeluar' => $disposisi->paginate(6, 'suratkeluar'),
+        ];
+        return view('halamandisposisisuratmasuk/HalamanDDisposisiSratMasuk', $data);
     }
 }

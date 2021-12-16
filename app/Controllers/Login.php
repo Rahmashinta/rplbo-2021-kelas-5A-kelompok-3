@@ -19,28 +19,21 @@ class Login extends BaseController
 
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'pengguna' => $this->penggunaModel->getPengguna()
         ];
         return view('HalamanLogin.php', $data);
     }
     public function validasi()
     {
         $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            //'pengguna' => $this->penggunaModel->getPenggunaByUsername($username)
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         $levelakses = $this->request->getVar('levelakses');
-        //dd($this->request->getVar());
 
 
         $pengguna = $this->penggunaModel->getPenggunaByUsername($username);
-
-        //var_dump($pengguna);
-
-        // dd($pengguna);
 
         if ($pengguna['username'] == $username && $pengguna['password'] == $password && $pengguna['levelakses'] == $levelakses) {
             if ($levelakses == 'Resepsionis') {
@@ -55,6 +48,7 @@ class Login extends BaseController
 
             return redirect()->to('login');
         } else {
+
             return redirect()->to('login');
         }
     }

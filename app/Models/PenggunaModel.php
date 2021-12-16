@@ -12,7 +12,6 @@ class PenggunaModel extends Model
 
     public function getPengguna()
     {
-        // return $this->table('suratmasuk');
         return $this->findAll();
     }
     public function getPenggunaByUsername($username)
@@ -21,5 +20,17 @@ class PenggunaModel extends Model
             return $this->findAll();
         }
         return $this->where(['username' => $username])->first();
+    }
+
+    public function getPenggunaById($id)
+    {
+        if ($id == null) {
+            return $this->findAll();
+        }
+        return $this->where(['id' => $id])->first();
+    }
+    public function search($keyword)
+    {
+        return $this->table('pengguna')->like('username', $keyword)->orlike('password', $keyword)->orlike('nama', $keyword)->orlike('levelakses', $keyword);
     }
 }

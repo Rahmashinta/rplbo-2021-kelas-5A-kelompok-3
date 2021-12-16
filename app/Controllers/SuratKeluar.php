@@ -20,7 +20,7 @@ class SuratKeluar extends BaseController
             'suratkeluar' => $this->suratKeluarModel->getSuratKeluar()
         ];
 
-        return view('halamansuratkeluar/index', $data);
+        return view('halamansuratkeluar/HalamanSuratKeluar', $data);
     }
 
     public function create()
@@ -30,26 +30,11 @@ class SuratKeluar extends BaseController
             'title' => 'Form Tambah Data Surat Keluar',
             'validation' => \Config\Services::validation()
         ];
-        return view('halamansuratkeluar/create', $data);
+        return view('halamansuratkeluar/FormTambahSuratKeluar', $data);
     }
 
     public function save()
     {
-        // validasi input
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => 'required[suratmasuk.asalsurat]',
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.',
-        //         ]
-        //     ]
-        // ])) {
-
-        //     $validation = \Config\Services::validation();
-
-        //     return redirect()->to('suratmasuk/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('suratmasuk/create')->withInput();
-        // }
         $fileSurat = $this->request->getFile('fileSurat');
 
         $file = $fileSurat->getName();
@@ -57,7 +42,7 @@ class SuratKeluar extends BaseController
         $fileSurat->move('file', $file);
 
         $this->suratKeluarModel->save([
-            'asalSurat' => $this->request->getVar('asalSurat'),
+            'penerimaSurat' => $this->request->getVar('penerimaSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),
             'perihalSurat' => $this->request->getVar('perihalSurat'),
             'kategoriSurat' => $this->request->getVar('kategoriSurat'),
@@ -84,46 +69,25 @@ class SuratKeluar extends BaseController
             'validation' => \Config\Services::validation(),
             'suratkeluar' => $this->suratKeluarModel->getSuratKeluarById($id)
         ];
-        return view('halamansuratkeluar/edit', $data);
+        return view('halamansuratkeluar/FormEditSuratKeluar', $data);
     }
 
     public function update()
     {
-        // cek asal surat
-
-        // $suratmasukLama = $this->suratmasukModel->getSuratMasuk();
-        // if ($suratmasukLama['asalsurat'] == $this->request->getVar('asalsurat')) {
-        //     $rule_judul = 'required';
-        // } else {
-        //     $rule_judul = 'required|is_unique[komik.judul]';
-        // }
-
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => $rule_judul,
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.'
-        //         ]
-        //     ]
-        // ])) {
-
-        //     return redirect()->to('suratmasuk/edit')->withInput();
-        // }
-
         $fileSurat = $this->request->getFile('fileSurat');
-        //cek gambar, apakah tetap gambar lama
+        //cek file, apakah tetap file lama
         if ($fileSurat->getError() == 4) {
             $namaSurat = $this->request->getVar('fileLama');
         } else {
-            //generate nama file random
+            //generate nama file 
             $namaSurat = $fileSurat->getName();
-            //pindahkan gambar
+            //pindahkan file
             $fileSurat->move('file', $namaSurat);
         }
 
         $this->suratKeluarModel->save([
             'id' => $this->request->getVar('id'),
-            'asalSurat' => $this->request->getVar('asalSurat'),
+            'penerimaSurat' => $this->request->getVar('penerimaSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),
             'perihalSurat' => $this->request->getVar('perihalSurat'),
             'kategoriSurat' => $this->request->getVar('kategoriSurat'),
@@ -133,5 +97,21 @@ class SuratKeluar extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('suratkeluar');
+    }
+
+    public function cari()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $suratkeluar = $this->suratKeluarModel->search($keyword);
+        } else {
+            $suratkeluar = $this->suratKeluarModel;
+        }
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratkeluar' => $suratkeluar->paginate(6, 'suratkeluar'),
+        ];
+        return view('halamansuratkeluar/HalamanSuratKeluar', $data);
     }
 }

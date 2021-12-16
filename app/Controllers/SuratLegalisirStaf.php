@@ -20,7 +20,7 @@ class SuratLegalisirStaf extends BaseController
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisir()
         ];
 
-        return view('halamansuratlegalisirstaf/index', $data);
+        return view('halamansuratlegalisirstaf/HalamanSuratLegalisir', $data);
     }
 
     public function delete($id)
@@ -38,40 +38,19 @@ class SuratLegalisirStaf extends BaseController
             'validation' => \Config\Services::validation(),
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisirById($id)
         ];
-        return view('halamansuratlegalisirstaf/edit', $data);
+        return view('halamansuratlegalisirstaf/FormEditSuratLegalisir', $data);
     }
 
     public function update()
     {
-        // cek asal surat
-
-        // $suratmasukLama = $this->suratmasukModel->getSuratMasuk();
-        // if ($suratmasukLama['asalsurat'] == $this->request->getVar('asalsurat')) {
-        //     $rule_judul = 'required';
-        // } else {
-        //     $rule_judul = 'required|is_unique[komik.judul]';
-        // }
-
-        // if (!$this->validate([
-        //     'asalsurat' => [
-        //         'rules' => $rule_judul,
-        //         'errors' => [
-        //             'required' => '{field} suratmasuk harus diisi.'
-        //         ]
-        //     ]
-        // ])) {
-
-        //     return redirect()->to('suratmasuk/edit')->withInput();
-        // }
-
         $fileSurat = $this->request->getFile('fileSurat');
-        //cek gambar, apakah tetap gambar lama
+        //cek file, apakah tetap file lama
         if ($fileSurat->getError() == 4) {
             $namaSurat = $this->request->getVar('fileLama');
         } else {
-            //generate nama file random
+            //generate nama file 
             $namaSurat = $fileSurat->getName();
-            //pindahkan gambar
+            //pindahkan file
             $fileSurat->move('file', $namaSurat);
         }
 
@@ -86,5 +65,20 @@ class SuratLegalisirStaf extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('suratlegalisirstaf');
+    }
+    public function cari()
+    {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $suratlegalisir = $this->suratLegalisirModel->search($keyword);
+        } else {
+            $suratlegalisir = $this->suratLegalisirModel;
+        }
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratlegalisir' => $suratlegalisir->paginate(6, 'suratlegalisir'),
+        ];
+        return view('halamansuratlegalisirstaf/HalamanSuratLegalisir', $data);
     }
 }

@@ -12,7 +12,6 @@ class SuratKeluarModel extends Model
 
     public function getSuratKeluar()
     {
-        // return $this->table('suratmasuk');
         return $this->findAll();
     }
     public function getSuratKeluarById($id)
@@ -21,5 +20,9 @@ class SuratKeluarModel extends Model
             return $this->findAll();
         }
         return $this->where(['id' => $id])->first();
+    }
+    public function search($keyword)
+    {
+        return $this->table('suratkeluar')->like('penerimaSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
     }
 }
