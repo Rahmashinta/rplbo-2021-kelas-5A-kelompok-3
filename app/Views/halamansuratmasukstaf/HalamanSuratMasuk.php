@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody style="text-align:left;">
-                            <?php $i = 1; ?>
+                            <?php $i = 1 + (4 * ($currentPage - 1)); ?>
                             <?php foreach ($suratmasuk as $sm) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
@@ -68,6 +68,11 @@
                     </table>
 
                 </div>
+
+                <div class="halaman">
+                    <?= $pager->links('suratmasuk', 'template_pagination'); ?>
+                </div>
+
             </div>
         </div>
     </div>

@@ -14,10 +14,12 @@ class SuratKeluar extends BaseController
     }
     public function index()
     {
-
+        $currentPage = $this->request->getVar('page_suratkeluar') ? $this->request->getVar('page_suratkeluar') : 1;
         $data = [
             'title' => 'Surat Keluar',
-            'suratkeluar' => $this->suratKeluarModel->getSuratKeluar()
+            'suratkeluar' => $this->suratKeluarModel->paginate(4, 'suratkeluar'),
+            'pager' => $this->suratKeluarModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('halamansuratkeluar/HalamanSuratKeluar', $data);

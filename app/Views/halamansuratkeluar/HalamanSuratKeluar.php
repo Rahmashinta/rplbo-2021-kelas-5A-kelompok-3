@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody style="text-align:left;">
-                        <?php $i = 1; ?>
+                        <?php $i = 1 + (4 * ($currentPage - 1)); ?>
                         <?php foreach ($suratkeluar as $sk) : ?>
                             <tr>
                                 <th scope="row" style="text-align:center;"><?= $i++; ?></th>
@@ -64,7 +64,9 @@
                     </tbody>
                 </table>
             </div>
-
+            <div class="halaman">
+                <?= $pager->links('suratkeluar', 'template_pagination'); ?>
+            </div>
         </div>
     </div>
 </div>

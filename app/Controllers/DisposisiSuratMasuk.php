@@ -14,10 +14,12 @@ class DisposisiSuratMasuk extends BaseController
     }
     public function index()
     {
-
+        $currentPage = $this->request->getVar('page_disposisisuratmasuk') ? $this->request->getVar('page_disposisisuratmasuk') : 1;
         $data = [
             'title' => 'Disposisi Surat Masuk',
-            'disposisisuratmasuk' => $this->disposisiSuratMasukModel->getDisposisiSuratMasuk()
+            'disposisisuratmasuk' => $this->disposisiSuratMasukModel->paginate(4, 'disposisisuratmasuk'),
+            'pager' => $this->disposisiSuratMasukModel->pager,
+            'currentPage' => $currentPage
         ];
         return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
     }

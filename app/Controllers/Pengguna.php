@@ -15,9 +15,13 @@ class Pengguna extends BaseController
     public function index()
     {
 
+        $currentPage = $this->request->getVar('page_pengguna') ? $this->request->getVar('page_pengguna') : 1;
+
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'pengguna' => $this->penggunaModel->getPengguna()
+            'pengguna' => $this->penggunaModel->paginate(4, 'pengguna'),
+            'pager' => $this->penggunaModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('halamanpengelolaanpengguna/HalamanPengelolaanPengguna', $data);
@@ -35,10 +39,10 @@ class Pengguna extends BaseController
     public function save()
     {
         $this->penggunaModel->save([
-            'username' => $this->request->getVar('username'),
-            'password' => $this->request->getVar('password'),
-            'nama' => $this->request->getVar('nama'),
-            'levelakses' => $this->request->getVar('levelakses')
+            'username' => strtolower($this->request->getVar('username')),
+            'password' => strtolower($this->request->getVar('password')),
+            'nama' => strtolower($this->request->getVar('nama')),
+            'levelakses' => ucwords(strtolower($this->request->getVar('levelakses')))
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');

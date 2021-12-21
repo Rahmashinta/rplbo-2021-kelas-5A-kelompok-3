@@ -15,9 +15,12 @@ class SuratMasukResepsionis extends BaseController
     public function index()
     {
 
+        $currentPage = $this->request->getVar('page_suratmasuk') ? $this->request->getVar('page_suratmasuk') : 1;
         $data = [
-            'title' => 'Surat Masuk',
-            'suratmasuk' => $this->suratMasukModel->getSuratMasuk()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratmasuk' => $this->suratMasukModel->paginate(4, 'suratmasuk'),
+            'pager' => $this->suratMasukModel->pager,
+            'currentPage' => $currentPage
         ];
         return view('halamansuratmasukresepsionis/HalamanSuratMasuk', $data);
     }

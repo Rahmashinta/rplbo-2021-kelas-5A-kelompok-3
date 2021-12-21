@@ -42,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
+                        <?php $i = 1 + (4 * ($currentPage - 1)); ?>
                         <?php foreach ($disposisisuratmasuk as $dsm) : ?>
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
@@ -76,7 +76,9 @@
                 </table>
             </div>
         </div>
-
+        <div class="halaman">
+            <?= $pager->links('disposisisuratmasuk', 'template_pagination'); ?>
+        </div>
     </div>
 </div>
 

@@ -15,9 +15,12 @@ class SuratLegalisirStaf extends BaseController
     public function index()
     {
 
+        $currentPage = $this->request->getVar('page_suratlegalisir') ? $this->request->getVar('page_suratlegalisir') : 1;
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisir()
+            'suratlegalisir' => $this->suratLegalisirModel->paginate(4, 'suratlegalisir'),
+            'pager' => $this->suratLegalisirModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('halamansuratlegalisirstaf/HalamanSuratLegalisir', $data);

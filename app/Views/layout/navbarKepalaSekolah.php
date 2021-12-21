@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav" style="font-weight: bold;">
-                <a class="nav-link active" aria-current="page" href="/login/validasi">Beranda</a>
+                <a class="nav-link active" aria-current="page" href="/login/berandakepalasekolah">Beranda</a>
                 <a class="nav-link" href="/disposisisuratmasuk">Disposisi Surat</a>
             </div>
         </div>

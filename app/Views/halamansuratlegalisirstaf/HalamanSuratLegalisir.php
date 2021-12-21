@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
+                        <?php $i = 1 + (4 * ($currentPage - 1)); ?>
                         <?php foreach ($suratlegalisir as $sl) : ?>
                             <tr>
                                 <th scope="row"><?= $i++; ?></th>
@@ -63,7 +63,9 @@
 
             </div>
 
-
+            <div class="halaman">
+                <?= $pager->links('suratlegalisir', 'template_pagination'); ?>
+            </div>
         </div>
     </div>
 </div>

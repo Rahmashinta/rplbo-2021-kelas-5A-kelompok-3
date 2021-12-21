@@ -29,27 +29,67 @@ class Login extends BaseController
         ];
 
         $username = $this->request->getVar('username');
+        $username = strtolower($username);
         $password = $this->request->getVar('password');
+        $password = strtolower($password);
         $levelakses = $this->request->getVar('levelakses');
+        $levelakses = strtolower($levelakses);
+        $levelakses = ucwords($levelakses);
 
 
         $pengguna = $this->penggunaModel->getPenggunaByUsername($username);
-
-        if ($pengguna['username'] == $username && $pengguna['password'] == $password && $pengguna['levelakses'] == $levelakses) {
-            if ($levelakses == 'Resepsionis') {
-                return view('halamanpengguna/HalamanResepsionis', $data);
-            } else if ($levelakses == 'Staf Tata Usaha') {
-                return view('halamanpengguna/HalamanStafTataUsaha', $data);
-            } else if ($levelakses == 'Kepala Tata Usaha') {
-                return view('halamanpengguna/HalamanKepalaTataUsaha', $data);
-            } else if ($levelakses == 'Kepala Sekolah') {
-                return view('halamanpengguna/HalamanKepalaSekolah', $data);
-            }
-
+        if ($pengguna == null) {
+            session()->setFlashdata('pesan', 'Username tidak Ditemukan');
             return redirect()->to('login');
         } else {
-
-            return redirect()->to('login');
+            if ($username == $pengguna['username'] && $pengguna['password'] == $password && $pengguna['levelakses'] == $levelakses) {
+                if ($levelakses == 'Resepsionis') {
+                    return view('halamanpengguna/HalamanResepsionis', $data);
+                } else if ($levelakses == 'Staf Tata Usaha') {
+                    return view('halamanpengguna/HalamanStafTataUsaha', $data);
+                } else if ($levelakses == 'Kepala Tata Usaha') {
+                    return view('halamanpengguna/HalamanKepalaTataUsaha', $data);
+                } else if ($levelakses == 'Kepala Sekolah') {
+                    return view('halamanpengguna/HalamanKepalaSekolah', $data);
+                }
+                return redirect()->to('login');
+            } else {
+                session()->setFlashdata('pesan', 'Username atau Password atau Level Akses tidak Ditemukan');
+                return redirect()->to('login');
+            }
         }
+    }
+
+    public function berandaResepsionis()
+    {
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+        ];
+        return view('halamanpengguna/HalamanResepsionis.php', $data);
+    }
+    public function berandaStafTataUsaha()
+    {
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+        ];
+        return view('halamanpengguna/HalamanStafTataUsaha.php', $data);
+    }
+    public function berandaKepalatataUsaha()
+    {
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+        ];
+        return view('halamanpengguna/HalamanKepalaTataUsaha.php', $data);
+    }
+    public function berandaKepalaSekolah()
+    {
+
+        $data = [
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+        ];
+        return view('halamanpengguna/HalamanKepalaSekolah.php', $data);
     }
 }
