@@ -14,11 +14,18 @@ class SuratLegalisirStaf extends BaseController
     }
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $suratlegalisir = $this->suratLegalisirModel->search($keyword);
+        } else {
+            $suratlegalisir = $this->suratLegalisirModel;
+        }
 
         $currentPage = $this->request->getVar('page_suratlegalisir') ? $this->request->getVar('page_suratlegalisir') : 1;
+
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratlegalisir' => $this->suratLegalisirModel->paginate(4, 'suratlegalisir'),
+            'suratlegalisir' => $suratlegalisir->paginate(4, 'suratlegalisir'),
             'pager' => $this->suratLegalisirModel->pager,
             'currentPage' => $currentPage
         ];
@@ -28,6 +35,10 @@ class SuratLegalisirStaf extends BaseController
 
     public function delete($id)
     {
+        //cari file berdasarkan id
+        $suratLegalisir = $this->suratLegalisirModel->find($id);
+
+        unlink('file/suratlegalisir/' . $suratLegalisir['fileSurat']);
 
         $this->suratLegalisirModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
@@ -54,7 +65,9 @@ class SuratLegalisirStaf extends BaseController
             //generate nama file 
             $namaSurat = $fileSurat->getName();
             //pindahkan file
-            $fileSurat->move('file', $namaSurat);
+            $fileSurat->move('file/suratlegalisir', $namaSurat);
+            //hapus file yang lama
+            unlink('file/suratlegalisir/' . $this->request->getVar('fileLama'));
         }
 
         $this->suratLegalisirModel->save([
@@ -68,20 +81,5 @@ class SuratLegalisirStaf extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('suratlegalisirstaf');
-    }
-    public function cari()
-    {
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $suratlegalisir = $this->suratLegalisirModel->search($keyword);
-        } else {
-            $suratlegalisir = $this->suratLegalisirModel;
-        }
-
-        $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratlegalisir' => $suratlegalisir->paginate(6, 'suratlegalisir'),
-        ];
-        return view('halamansuratlegalisirstaf/HalamanSuratLegalisir', $data);
     }
 }

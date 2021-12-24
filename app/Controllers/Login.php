@@ -22,8 +22,10 @@ class Login extends BaseController
         ];
         return view('HalamanLogin.php', $data);
     }
+
     public function validasi()
     {
+
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
@@ -34,22 +36,21 @@ class Login extends BaseController
         $password = strtolower($password);
         $levelakses = $this->request->getVar('levelakses');
         $levelakses = strtolower($levelakses);
-        $levelakses = ucwords($levelakses);
-
 
         $pengguna = $this->penggunaModel->getPenggunaByUsername($username);
+
         if ($pengguna == null) {
             session()->setFlashdata('pesan', 'Username tidak Ditemukan');
             return redirect()->to('login');
         } else {
             if ($username == $pengguna['username'] && $pengguna['password'] == $password && $pengguna['levelakses'] == $levelakses) {
-                if ($levelakses == 'Resepsionis') {
+                if ($levelakses == 'resepsionis') {
                     return view('halamanpengguna/HalamanResepsionis', $data);
-                } else if ($levelakses == 'Staf Tata Usaha') {
+                } else if ($levelakses == 'staf tata usaha') {
                     return view('halamanpengguna/HalamanStafTataUsaha', $data);
-                } else if ($levelakses == 'Kepala Tata Usaha') {
+                } else if ($levelakses == 'kepala tata usaha') {
                     return view('halamanpengguna/HalamanKepalaTataUsaha', $data);
-                } else if ($levelakses == 'Kepala Sekolah') {
+                } else if ($levelakses == 'kepala sekolah') {
                     return view('halamanpengguna/HalamanKepalaSekolah', $data);
                 }
                 return redirect()->to('login');
@@ -59,6 +60,7 @@ class Login extends BaseController
             }
         }
     }
+
 
     public function berandaResepsionis()
     {

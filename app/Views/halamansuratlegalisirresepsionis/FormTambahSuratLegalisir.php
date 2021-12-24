@@ -11,24 +11,24 @@
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="teks" class="form-control" id="nama" name="nama" autofocus value="<?= old('nama'); ?>">
+                    <label for="nama" class="form-label"><b>Nama</b></label>
+                    <input type="teks" class="form-control" id="nama" name="nama" required autofocus value="<?= old('nama'); ?>">
 
                 </div>
 
                 <div class="mb-3">
-                    <label for="kelas" class="form-label">Kelas</label>
-                    <input type="teks" class="form-control" id="kelas" name="kelas" value="<?= old('kelas'); ?>">
+                    <label for="kelas" class="form-label"><b>Kelas</b></label>
+                    <input type="teks" class="form-control" id="kelas" name="kelas" required value="<?= old('kelas'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="tahunAjaran" class="form-label">Tahun Ajaran</label>
-                    <input type="text" class="form-control" id="tahunAjaran" name="tahunAjaran" value="<?= old('tahunAjaran'); ?>">
+                    <label for="tahunAjaran" class="form-label"><b>Tahun Ajaran</b></label>
+                    <input type="text" class="form-control" id="tahunAjaran" name="tahunAjaran" required value="<?= old('tahunAjaran'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="fileSurat" class="form-label">File Surat</label>
-                    <input type="file" class="form-control" id="fileSurat" name="fileSurat" value="<?= old('fileSurat'); ?>">
+                    <label for="fileSurat" class="form-label"><b>File Surat</b></label>
+                    <input type="file" class="form-control" id="fileSurat" name="fileSurat" required value="<?= old('fileSurat'); ?>">
                 </div>
 
                 <button type="submit" class="btn btn-warning">Simpan</button>

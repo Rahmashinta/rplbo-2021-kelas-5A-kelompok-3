@@ -14,7 +14,7 @@
             <?php endif; ?>
 
             <div class="cari" style="padding-top: 5px;">
-                <form action="pengguna/cari" method="post">
+                <form action="pengguna" method="post">
                     <div class="input-group mb-3">
                         <h2 style="padding-right: 530px;">Daftar Pengguna</h2>
                         <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
@@ -24,7 +24,7 @@
             </div>
 
             <div>
-                <table class="table table-bordered" style="text-align:left; padding:0px">
+                <table class="table table-bordered" style="text-align:center;">
                     <thead>
                         <tr>
                             <th scope="col" style="width: 4%;">No</th>
@@ -50,11 +50,10 @@
                                     </div>
 
                                     <form action="/pengguna/delete/<?= $pg['id']; ?>" method="post" class="d-inline">
-                                        <?= csrf_field(); ?>
 
                                         <input type="hidden" name="_method" value="DELETE">
 
-                                        <button type="submit" class="btn btn-danger" style="width:70px;font-size:15px" onclick="return confirm('apakah anda yakin?'); "> Delete</button>
+                                        <button type="submit" class="btn btn-danger" style="width:70px;font-size:15px" onclick="return confirm('apakah anda yakin?'); "> Hapus</button>
                                     </form>
                                 </td>
                             </tr>

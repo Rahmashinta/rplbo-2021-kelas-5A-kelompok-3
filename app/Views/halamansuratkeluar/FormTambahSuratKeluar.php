@@ -11,38 +11,48 @@
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
-                    <label for="penerimaSurat" class="form-label ">Penerima Surat</label>
-                    <input type="text" class="form-control" id="penerimaSurat" name="penerimaSurat" autofocus value="<?= old('penerimaSurat'); ?>">
+                    <label for="penerimaSurat" class="form-label "><b>Penerima Surat</b></label>
+                    <input type="text" class="form-control" id="penerimaSurat" name="penerimaSurat" required autofocus value="<?= old('penerimaSurat'); ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="nomorSurat" class="form-label "><b>Nomor Surat</b></label>
+                    <input type="text" class="form-control" id="nomorSurat" name="nomorSurat" required autofocus value="<?= old('nomorSurat'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggalSurat" class="form-label">Tanggal Surat</label>
-                    <input type="date" class="form-control" id="tanggalSurat" name="tanggalSurat" value="<?= old('tanggalSurat'); ?>">
+                    <label for="tanggalSurat" class="form-label"><b>Tanggal Surat</b></label>
+                    <input type="date" class="form-control" id="tanggalSurat" name="tanggalSurat" required value="<?= old('tanggalSurat'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="perihalSurat" class="form-label">Perihal Surat</label>
-                    <input type="text" class="form-control" id="perihalSurat" name="perihalSurat" value="<?= old('perihalSurat'); ?>">
+                    <label for="perihalSurat" class="form-label"><b>Perihal Surat</b></label>
+                    <input type="text" class="form-control" id="perihalSurat" name="perihalSurat" required value="<?= old('perihalSurat'); ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="penerimaSurat" class="form-label ">Kategori Surat</label>
+                    <label for="kategoriSurat" class="form-label "><b>Kategori Surat</b></label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="kategoriSurat" id="kategoriSurat1" value="Rahasia" <?= old('perihalSurat'); ?>>
-                        <label class="form-check-label" for="kategoriSurat1" value="Rahasia">
-                            Rahasia
+                        <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat1" value="Pribadi" <?= old('kategoriSurat'); ?>>
+                        <label class="form-check-label" for="kategoriSurat">
+                            Pribadi
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="kategoriSurat" id="kategoriSurat1" value="Biasa" <?= old('perihalSurat'); ?>>
-                        <label class="form-check-label" for="kategoriSurat1" value="Biasa">
-                            Biasa
+                        <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat2" value="Dinas" <?= old('kategoriSurat'); ?>>
+                        <label class="form-check-label" for="kategoriSurat">
+                            Dinas
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat3" value="Niaga" <?= old('kategoriSurat'); ?>>
+                        <label class="form-check-label" for="kategoriSurat">
+                            Niaga
                         </label>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="fileSurat" class="form-label">File Surat</label>
-                    <input type="file" class="form-control" id="fileSurat" name="fileSurat" value="<?= old('fileSurat'); ?>">
+                    <label for="fileSurat" class="form-label"><b>File Surat</b></label>
+                    <input type="file" class="form-control" id="fileSurat" name="fileSurat" required value="<?= old('fileSurat'); ?>">
                 </div>
                 <button type="submit" class="btn btn-warning">Simpan</button>
             </form>

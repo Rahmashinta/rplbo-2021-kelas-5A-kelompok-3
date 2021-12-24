@@ -18,7 +18,7 @@ class SuratMasukResepsionis extends BaseController
         $currentPage = $this->request->getVar('page_suratmasuk') ? $this->request->getVar('page_suratmasuk') : 1;
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratmasuk' => $this->suratMasukModel->paginate(4, 'suratmasuk'),
+            'suratmasuk' => $this->suratMasukModel->paginate(8, 'suratmasuk'),
             'pager' => $this->suratMasukModel->pager,
             'currentPage' => $currentPage
         ];

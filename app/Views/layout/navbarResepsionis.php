@@ -9,10 +9,11 @@
                 <a class="nav-link active" aria-current="page" href="/login/berandaresepsionis">Beranda</a>
                 <a class="nav-link" href="/suratmasukresepsionis">Surat Masuk</a>
                 <a class="nav-link" href="/suratlegalisirresepsionis">Surat Legalisir</a>
+                <div class="logout" style="margin-left:525px">
+                    <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
+                </div>
             </div>
         </div>
-        <div class="logout" style="float: right;">
-            <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
-        </div>
+
     </div>
 </nav>

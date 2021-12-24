@@ -14,12 +14,18 @@ class Pengguna extends BaseController
     }
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $pengguna = $this->penggunaModel->search($keyword);
+        } else {
+            $pengguna = $this->penggunaModel;
+        }
 
         $currentPage = $this->request->getVar('page_pengguna') ? $this->request->getVar('page_pengguna') : 1;
 
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'pengguna' => $this->penggunaModel->paginate(4, 'pengguna'),
+            'pengguna' => $pengguna->paginate(4, 'pengguna'),
             'pager' => $this->penggunaModel->pager,
             'currentPage' => $currentPage
         ];
@@ -81,20 +87,5 @@ class Pengguna extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('pengguna');
-    }
-    public function cari()
-    {
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $pengguna = $this->penggunaModel->search($keyword);
-        } else {
-            $pengguna = $this->penggunaModel;
-        }
-
-        $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratkeluar' => $pengguna->paginate(6, 'suratkeluar'),
-        ];
-        return view('halamanpengelolaanpengguna/HalamanPengelolaanPengguna', $data);
     }
 }

@@ -7,11 +7,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav" style="font-weight: bold;">
                 <a class="nav-link active" aria-current="page" href="/login/berandakepalasekolah">Beranda</a>
-                <a class="nav-link" href="/disposisisuratmasuk">Disposisi Surat</a>
+                <a class="nav-link" href="/disposisisuratmasuk">Disposisi Surat </a>
+                <div class="logout" style="margin-left:633px">
+                    <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
+                </div>
             </div>
         </div>
-        <div class="logout" style="float: right;">
-            <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
-        </div>
+
     </div>
 </nav>

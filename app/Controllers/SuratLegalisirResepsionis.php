@@ -17,7 +17,7 @@ class SuratLegalisirResepsionis extends BaseController
         $currentPage = $this->request->getVar('page_suratlegalisir') ? $this->request->getVar('page_suratlegalisir') : 1;
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratlegalisir' => $this->suratLegalisirModel->paginate(4, 'suratlegalisir'),
+            'suratlegalisir' => $this->suratLegalisirModel->paginate(8, 'suratlegalisir'),
             'pager' => $this->suratLegalisirModel->pager,
             'currentPage' => $currentPage
         ];
@@ -42,7 +42,7 @@ class SuratLegalisirResepsionis extends BaseController
 
         $file = $fileSurat->getName();
 
-        $fileSurat->move('file', $file);
+        $fileSurat->move('file/suratlegalisir', $file);
 
         $this->suratLegalisirModel->save([
             'nama' => $this->request->getVar('nama'),

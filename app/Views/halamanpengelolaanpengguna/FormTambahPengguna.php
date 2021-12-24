@@ -11,23 +11,23 @@
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
-                    <label for="username" class="form-label ">Username</label>
-                    <input type="teks" class="form-control" id="username" name="username" autofocus value="<?= old('username'); ?>">
+                    <label for="username" class="form-label "><b>Username</b></label>
+                    <input type="teks" class="form-control" id="username" name="username" required autofocus value="<?= old('username'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="teks" class="form-control" id="password" name="password" value="<?= old('password'); ?>">
+                    <label for="password" class="form-label"><b>Password</b></label>
+                    <input type="teks" class="form-control" id="password" name="password" required value="<?= old('password'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="<?= old('nama'); ?>">
+                    <label for="nama" class="form-label"><b>Nama</b></label>
+                    <input type="text" class="form-control" id="nama" name="nama" required value="<?= old('nama'); ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="levelakses" class="form-label">Level Akses</label>
-                    <input type="text" class="form-control" id="levelakses" name="levelakses" value="<?= old('levelakses'); ?>">
+                    <label for="levelakses" class="form-label"><b>Level Akses</b></label>
+                    <input type="text" class="form-control" id="levelakses" name="levelakses" required value="<?= old('levelakses'); ?>">
                 </div>
                 <button type="submit" class="btn btn-warning">Simpan</button>
             </form>

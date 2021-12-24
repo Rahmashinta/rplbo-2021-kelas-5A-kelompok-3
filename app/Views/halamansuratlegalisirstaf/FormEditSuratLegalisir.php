@@ -14,21 +14,21 @@
                 <input type="hidden" name="fileLama" value="<?= $suratlegalisir['fileSurat']; ?>">
 
                 <div class="mb-3">
-                    <label for="nama" class="form-label ">Nama</label>
+                    <label for="nama" class="form-label "><b>Nama</b></label>
                     <input type="teks" class="form-control " id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $suratlegalisir['nama'] ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="kelas" class="form-label">Kelas</label>
+                    <label for="kelas" class="form-label"><b>Kelas</b></label>
                     <input type="teks" class="form-control" id="kelas" name="kelas" value="<?= (old('kelas')) ? old('kelas') : $suratlegalisir['kelas'] ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label for="tahunAjaran" class="form-label">Tahun Ajaran</label>
+                    <label for="tahunAjaran" class="form-label"><b>Tahun Ajaran</b></label>
                     <input type="text" class="form-control" id="tahunAjaran" name="tahunAjaran" value="<?= (old('tahunAjaran')) ? old('tahunAjaran') : $suratlegalisir['tahunAjaran'] ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="fileSurat" class="form-label">File Surat</label>
+                    <label for="fileSurat" class="form-label"><b>File Surat</b></label>
                     <input type="file" class="form-control" id="fileSurat" name="fileSurat" value="<?= (old('fileSurat')) ? old('fileSurat') : $suratlegalisir['fileSurat'] ?>">
                 </div>
 

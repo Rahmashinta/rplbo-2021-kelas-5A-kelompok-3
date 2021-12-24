@@ -8,10 +8,11 @@
             <div class="navbar-nav" style="font-weight: bold;">
                 <a class="nav-link active" aria-current="page" href="/login/berandakepalatatausaha">Beranda</a>
                 <a class="nav-link" href="/pengguna">Pengelolaan Pengguna</a>
+                <div class="logout" style="margin-left:570px">
+                    <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
+                </div>
             </div>
         </div>
-        <div class="logout" style="float: right;">
-            <a class="nav-link" href="/login" style="float: right; color:black; font-weight:bold">Logout</a>
-        </div>
+
     </div>
 </nav>

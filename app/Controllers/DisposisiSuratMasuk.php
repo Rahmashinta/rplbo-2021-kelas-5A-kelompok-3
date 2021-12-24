@@ -14,10 +14,26 @@ class DisposisiSuratMasuk extends BaseController
     }
     public function index()
     {
+        // $currentPage = $this->request->getVar('page_disposisisuratmasuk') ? $this->request->getVar('page_disposisisuratmasuk') : 1;
+        // $data = [
+        //     'title' => 'Disposisi Surat Masuk',
+        //     'disposisisuratmasuk' => $this->disposisiSuratMasukModel->paginate(4, 'disposisisuratmasuk'),
+        //     'pager' => $this->disposisiSuratMasukModel->pager,
+        //     'currentPage' => $currentPage
+        // ];
+        // return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $disposisi = $this->disposisiSuratMasukModel->search($keyword);
+        } else {
+            $disposisi = $this->disposisiSuratMasukModel;
+        }
         $currentPage = $this->request->getVar('page_disposisisuratmasuk') ? $this->request->getVar('page_disposisisuratmasuk') : 1;
+
         $data = [
-            'title' => 'Disposisi Surat Masuk',
-            'disposisisuratmasuk' => $this->disposisiSuratMasukModel->paginate(4, 'disposisisuratmasuk'),
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'disposisisuratmasuk' => $disposisi->paginate(4, 'disposisisuratmasuk'),
             'pager' => $this->disposisiSuratMasukModel->pager,
             'currentPage' => $currentPage
         ];
@@ -92,21 +108,5 @@ class DisposisiSuratMasuk extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('disposisisuratmasuk');
-    }
-
-    public function cari()
-    {
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $disposisi = $this->disposisiSuratMasukModel->search($keyword);
-        } else {
-            $disposisi = $this->disposisiSuratMasukModel;
-        }
-
-        $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'disposisisuratmasuk' => $disposisi->paginate(6, 'suratkeluar'),
-        ];
-        return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
     }
 }

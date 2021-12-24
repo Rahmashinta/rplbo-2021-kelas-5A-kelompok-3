@@ -14,7 +14,7 @@
             <?php endif; ?>
 
             <div class="cari" style="padding-top: 15px;">
-                <form action="suratkeluar/cari" method="post">
+                <form action="suratkeluar" method="post">
                     <div class="input-group mb-3">
                         <h2 style="padding-right: 530px;">Daftar Surat Keluar</h2>
                         <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
@@ -24,39 +24,40 @@
             </div>
 
             <div class="table">
-                <table class="table" style="text-align:center;">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead style="text-align:center;">
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col" style="width: 250px;">Penerima Surat</th>
-                            <th scope="col" style="width: 120px;">Tanggal Surat</th>
-                            <th scope="col" style="width: 250px;">Perihal</th>
-                            <th scope="col" style="width: 130px;">Kategori Surat</th>
-                            <th scope="col" style="width: 210px;">File Surat</th>
-                            <th scope="col" style="width: 80px;">Aksi</th>
+                            <th scope="col" style="width: 5%;">No</th>
+                            <th scope="col" style="width: 20%;">Penerima Surat</th>
+                            <th scope="col" style="width: 13%;">Nomor Surat</th>
+                            <th scope="col" style="width: 13%;">Tanggal Surat</th>
+                            <th scope="col" style="width: 20%;">Perihal</th>
+                            <th scope="col" style="width: 13%;">Kategori Surat</th>
+                            <th scope="col" style="width: 20%;">File Surat</th>
+                            <th scope="col" style="width: 10%;">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody style="text-align:left;">
+                    <tbody>
                         <?php $i = 1 + (4 * ($currentPage - 1)); ?>
                         <?php foreach ($suratkeluar as $sk) : ?>
                             <tr>
                                 <th scope="row" style="text-align:center;"><?= $i++; ?></th>
                                 <td><?= $sk['penerimaSurat']; ?></td>
+                                <td><?= $sk['nomorSurat']; ?></td>
                                 <td><?= $sk['tanggalSurat']; ?></td>
                                 <td><?= $sk['perihalSurat']; ?></td>
-                                <td><?= $sk['kategoriSurat']; ?></td>
-                                <td><?= $sk['fileSurat']; ?></td>
+                                <td style="text-align:center;"><?= $sk['kategoriSurat']; ?></td>
+                                <td><a href="/file/suratkeluar/<?= $sk['fileSurat']; ?>"><?= $sk['fileSurat']; ?></a></td>
                                 <td>
                                     <div class="aksi" style="padding-bottom:5px;" style="text-align:center">
                                         <a href="/suratkeluar/edit/<?= $sk['id']; ?>" class="btn btn-warning" style="width:70px;">Edit</a>
                                     </div>
 
                                     <form action="/suratkeluar/delete/<?= $sk['id']; ?>" method="post" class="d-inline">
-                                        <?= csrf_field(); ?>
 
                                         <input type="hidden" name="_method" value="DELETE">
 
-                                        <button type="submit" class="btn btn-danger" style="width:70px;" onclick="return confirm('apakah anda yakin?'); "> Delete</button>
+                                        <button type="submit" class="btn btn-danger" style="width:70px;" onclick="return confirm('apakah anda yakin?'); "> Hapus</button>
                                     </form>
                                 </td>
                             </tr>

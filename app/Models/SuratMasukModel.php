@@ -8,7 +8,7 @@ class SuratMasukModel extends Model
 {
     protected $table = 'suratmasuk';
     protected $userTimestamps = true;
-    protected $allowedFields = ['asalSurat', 'tanggalSurat', 'perihalSurat', 'kategoriSurat', 'fileSurat'];
+    protected $allowedFields = ['asalSurat', 'nomorSurat', 'tanggalSurat', 'perihalSurat', 'kategoriSurat', 'fileSurat'];
 
     public function getSuratMasuk()
     {
@@ -23,6 +23,6 @@ class SuratMasukModel extends Model
     }
     public function search($keyword)
     {
-        return $this->table('suratmasuk')->like('asalSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
+        return $this->table('suratmasuk')->like('asalSurat', $keyword)->orlike('nomorSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
     }
 }

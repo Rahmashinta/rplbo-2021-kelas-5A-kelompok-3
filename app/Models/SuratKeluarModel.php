@@ -8,11 +8,11 @@ class SuratKeluarModel extends Model
 {
     protected $table = 'suratkeluar';
     protected $userTimestamps = true;
-    protected $allowedFields = ['penerimaSurat', 'tanggalSurat', 'perihalSurat', 'kategoriSurat', 'fileSurat'];
+    protected $allowedFields = ['penerimaSurat', 'nomorSurat', 'tanggalSurat', 'perihalSurat', 'kategoriSurat', 'fileSurat'];
 
     public function getSuratKeluar()
     {
-        return $this->findAll();
+        // return $this->findAll();
     }
     public function getSuratKeluarById($id)
     {
@@ -23,6 +23,6 @@ class SuratKeluarModel extends Model
     }
     public function search($keyword)
     {
-        return $this->table('suratkeluar')->like('penerimaSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
+        return $this->table('suratkeluar')->like('penerimaSurat', $keyword)->orlike('nomorSurat', $keyword)->orlike('tanggalSurat', $keyword)->orlike('perihalSurat', $keyword)->orlike('kategoriSurat', $keyword)->orlike('fileSurat', $keyword);
     }
 }

@@ -15,8 +15,8 @@
                 </div>
             <?php endif; ?>
             <div class="table">
-                <table class="table" style="text-align:center;">
-                    <thead>
+                <table class="table table-bordered ">
+                    <thead style="text-align:center;">
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Asal Surat</th>
@@ -25,12 +25,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
+                        <?php $i = 1 + (8 * ($currentPage - 1)); ?>
                         <?php foreach ($suratmasuk as $sm) : ?>
                             <tr>
-                                <th scope="row"><?= $i++; ?></th>
+                                <th scope="row" style="text-align:center;"><?= $i++; ?></th>
                                 <td><?= $sm['asalSurat']; ?></td>
-                                <td><?= $sm['tanggalSurat']; ?></td>
+                                <td style="text-align:center;"><?= $sm['tanggalSurat']; ?></td>
                                 <td><?= $sm['perihalSurat']; ?></td>
                             </tr>
                         <?php endforeach; ?>
@@ -38,7 +38,9 @@
                 </table>
 
             </div>
-
+            <div class="halaman">
+                <?= $pager->links('suratmasuk', 'template_pagination'); ?>
+            </div>
 
         </div>
     </div>

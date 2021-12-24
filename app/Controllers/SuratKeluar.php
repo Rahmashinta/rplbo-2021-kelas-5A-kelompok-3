@@ -14,14 +14,20 @@ class SuratKeluar extends BaseController
     }
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $suratkeluar = $this->suratKeluarModel->search($keyword);
+        } else {
+            $suratkeluar = $this->suratKeluarModel;
+        }
         $currentPage = $this->request->getVar('page_suratkeluar') ? $this->request->getVar('page_suratkeluar') : 1;
+
         $data = [
-            'title' => 'Surat Keluar',
-            'suratkeluar' => $this->suratKeluarModel->paginate(4, 'suratkeluar'),
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
+            'suratkeluar' => $suratkeluar->paginate(6, 'suratkeluar'),
             'pager' => $this->suratKeluarModel->pager,
             'currentPage' => $currentPage
         ];
-
         return view('halamansuratkeluar/HalamanSuratKeluar', $data);
     }
 
@@ -41,10 +47,11 @@ class SuratKeluar extends BaseController
 
         $file = $fileSurat->getName();
 
-        $fileSurat->move('file', $file);
+        $fileSurat->move('file/suratkeluar', $file);
 
         $this->suratKeluarModel->save([
             'penerimaSurat' => $this->request->getVar('penerimaSurat'),
+            'nomorSurat' => $this->request->getVar('nomorSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),
             'perihalSurat' => $this->request->getVar('perihalSurat'),
             'kategoriSurat' => $this->request->getVar('kategoriSurat'),
@@ -58,6 +65,11 @@ class SuratKeluar extends BaseController
 
     public function delete($id)
     {
+        //cari file berdasarkan id
+        $suratKeluar = $this->suratKeluarModel->find($id);
+
+        //hapus file dari penyimpanan
+        unlink('file/suratkeluar/' . $suratKeluar['fileSurat']);
 
         $this->suratKeluarModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
@@ -84,12 +96,15 @@ class SuratKeluar extends BaseController
             //generate nama file 
             $namaSurat = $fileSurat->getName();
             //pindahkan file
-            $fileSurat->move('file', $namaSurat);
+            $fileSurat->move('file/suratkeluar', $namaSurat);
+            //hapus file yang lama
+            unlink('file/suratkeluar/' . $this->request->getVar('fileLama'));
         }
 
         $this->suratKeluarModel->save([
             'id' => $this->request->getVar('id'),
             'penerimaSurat' => $this->request->getVar('penerimaSurat'),
+            'nomorSurat' => $this->request->getVar('nomorSurat'),
             'tanggalSurat' => $this->request->getVar('tanggalSurat'),
             'perihalSurat' => $this->request->getVar('perihalSurat'),
             'kategoriSurat' => $this->request->getVar('kategoriSurat'),

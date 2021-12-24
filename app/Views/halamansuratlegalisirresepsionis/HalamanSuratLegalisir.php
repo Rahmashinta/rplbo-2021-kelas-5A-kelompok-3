@@ -15,18 +15,18 @@
                 </div>
             <?php endif; ?>
 
-            <table class="table">
-                <thead>
+            <table class="table table-bordered">
+                <thead style="text-align:center;">
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Siswa</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Tahun Ajaran</th>
-                        <th scope="col">File Surat</th>
+                        <th scope="col" style="width:5%">No</th>
+                        <th scope="col" style="width:30%">Nama Siswa</th>
+                        <th scope="col" style="width:10%">Kelas</th>
+                        <th scope="col" style="width:10%">Tahun Ajaran</th>
+                        <th scope="col" style="width:40%">File Surat</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $i = 1 + (8 * ($currentPage - 1)); ?>
                     <?php foreach ($suratlegalisir as $sl) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
@@ -39,6 +39,9 @@
                 </tbody>
             </table>
 
+        </div>
+        <div class="halaman">
+            <?= $pager->links('suratlegalisir', 'template_pagination'); ?>
         </div>
     </div>
 </div>
