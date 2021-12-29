@@ -9,10 +9,14 @@
             <form action="/pengguna/save" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
+                <div class="mb-3">
+                    <label for="nama" class="form-label"><b>Nama</b></label>
+                    <input type="text" class="form-control" id="nama" name="nama" required autofocus value="<?= old('nama'); ?>">
+                </div>
 
                 <div class="mb-3">
                     <label for="username" class="form-label "><b>Username</b></label>
-                    <input type="teks" class="form-control" id="username" name="username" required autofocus value="<?= old('username'); ?>">
+                    <input type="teks" class="form-control" id="username" name="username" required value="<?= old('username'); ?>">
                 </div>
 
                 <div class="mb-3">
@@ -20,10 +24,6 @@
                     <input type="teks" class="form-control" id="password" name="password" required value="<?= old('password'); ?>">
                 </div>
 
-                <div class="mb-3">
-                    <label for="nama" class="form-label"><b>Nama</b></label>
-                    <input type="text" class="form-control" id="nama" name="nama" required value="<?= old('nama'); ?>">
-                </div>
 
                 <div class="mb-3">
                     <label for="levelakses" class="form-label"><b>Level Akses</b></label>

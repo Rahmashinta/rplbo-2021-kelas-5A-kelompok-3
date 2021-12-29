@@ -17,7 +17,7 @@
                 <form action="disposisisuratmasuk" method="post">
                     <div class="input-group mb-3">
                         <h2 style="padding-right: 400px;">Daftar Disposisi Surat Masuk</h2>
-                        <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
+                        <input type="text" class="form-control" placeholder="Masukkan Keyword" name="keyword">
                         <button class="btn btn-outline-secondary btn-warning" type="submit" name="submit">Cari</button>
                     </div>
                 </form>

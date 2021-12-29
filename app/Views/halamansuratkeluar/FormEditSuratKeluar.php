@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Form Ubah Data Surat Masuk</h2>
+            <h2>Form Edit Surat Keluar</h2>
             <form action="/suratkeluar/update" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
@@ -37,19 +37,19 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" id="kategoriSurat1" value="Pribadi" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat1" value="Pribadi">
-                            Pribadi
+                            <b>Pribadi</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" id="kategoriSurat2" value="Dinas" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat2" value="Dinas">
-                            Dinas
+                            <b>Dinas</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" id="kategoriSurat3" value="Niaga" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat3" value="Niaga">
-                            Niaga
+                            <b>Niaga</b>
                         </label>
                     </div>
                 </div>

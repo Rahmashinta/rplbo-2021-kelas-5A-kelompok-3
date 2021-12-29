@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Form Tambah Disposisi Surat Masuk</h2>
+            <h2>Form Tambah Disposisi</h2>
 
             <form action="/disposisisuratmasuk/save" method="post" enctype="multipart/form-data">
 

@@ -17,7 +17,7 @@
                 <form action="suratkeluar" method="post">
                     <div class="input-group mb-3">
                         <h2 style="padding-right: 530px;">Daftar Surat Keluar</h2>
-                        <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
+                        <input type="text" class="form-control" placeholder="Masukkan Keyword " name="keyword">
                         <button class="btn btn-outline-secondary btn-warning" type="submit" name="submit">Cari</button>
                     </div>
                 </form>
@@ -31,7 +31,7 @@
                             <th scope="col" style="width: 20%;">Penerima Surat</th>
                             <th scope="col" style="width: 13%;">Nomor Surat</th>
                             <th scope="col" style="width: 13%;">Tanggal Surat</th>
-                            <th scope="col" style="width: 20%;">Perihal</th>
+                            <th scope="col" style="width: 20%;">Perihal Surat</th>
                             <th scope="col" style="width: 13%;">Kategori Surat</th>
                             <th scope="col" style="width: 20%;">File Surat</th>
                             <th scope="col" style="width: 10%;">Aksi</th>

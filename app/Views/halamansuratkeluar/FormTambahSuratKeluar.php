@@ -33,19 +33,19 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat1" value="Pribadi" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat">
-                            Pribadi
+                            <b>Pribadi</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat2" value="Dinas" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat">
-                            Dinas
+                            <b>Dinas</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="kategoriSurat" required id="kategoriSurat3" value="Niaga" <?= old('kategoriSurat'); ?>>
                         <label class="form-check-label" for="kategoriSurat">
-                            Niaga
+                            <b>Niaga</b>
                         </label>
                     </div>
                 </div>

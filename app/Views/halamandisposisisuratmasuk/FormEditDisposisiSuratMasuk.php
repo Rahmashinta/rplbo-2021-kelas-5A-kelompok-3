@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Form Ubah Data Disposisi Surat Masuk</h2>
+            <h2>Form Edit Disposisi</h2>
             <form action="/disposisisuratmasuk/update" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
@@ -20,7 +20,7 @@
                     <input type="date" class="form-control " id="tanggalSurat" name="tanggalSurat" autofocus value="<?= (old('tanggalSurat')) ? old('tanggalSurat') : $disposisisuratmasuk['tanggalSurat'] ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="perihalSurat" class="form-label "><b>Perihal Surat</b></label>
+                    <label for="perihalSurat" class="form-label "><b>Perihal </b></label>
                     <input type="teks" class="form-control " id="perihalSurat" name="perihalSurat" autofocus value="<?= (old('perihalSurat')) ? old('perihalSurat') : $disposisisuratmasuk['perihalSurat'] ?>">
                 </div>
                 <div class="mb-3">
@@ -28,7 +28,7 @@
                     <input type="teks" class="form-control " id="asalSurat" name="asalSurat" autofocus value="<?= (old('asalSurat')) ? old('asalSurat') : $disposisisuratmasuk['asalSurat'] ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="penerimaDisposisi" class="form-label "><b>Penerima Disposisi</b></label>
+                    <label for="penerimaDisposisi" class="form-label "><b>Penerima </b></label>
                     <input type="teks" class="form-control " id="penerimaDisposisi" name="penerimaDisposisi" autofocus value="<?= (old('penerimaDisposisi')) ? old('penerimaDisposisi') : $disposisisuratmasuk['penerimaDisposisi'] ?>">
                 </div>
                 <div class="mb-3">
@@ -36,30 +36,30 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="sifatSurat" id="sifatSurat1" value="Penting" <?= old('sifatSurat'); ?>>
                         <label class="form-check-label" for="sifatSurat1" value="Penting">
-                            Penting
+                            <b>Penting</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="sifatSurat" id="sifatSurat2" value="Rahasia" <?= old('sifatSurat'); ?>>
                         <label class="form-check-label" for="sifatSurat2" value="Rahasia">
-                            Rahasia
+                            <b>Rahasia</b>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sifatSurat" id="sifatSurat3" value="Pribadi" <?= old('sifatSurat'); ?>>
-                        <label class="form-check-label" for="sifatSurat3" value="Pribadi">
-                            Pribadi
+                        <input class="form-check-input" type="radio" name="sifatSurat" id="sifatSurat3" value="Segera" <?= old('sifatSurat'); ?>>
+                        <label class="form-check-label" for="sifatSurat3" value="Segera">
+                            <b>Segera</b>
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="sifatSurat" id="sifatSurat3" value="Biasa" <?= old('sifatSurat'); ?>>
                         <label class="form-check-label" for="sifatSurat4" value="Biasa">
-                            Biasa
+                            <b>Biasa</b>
                         </label>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="isiDisposisi" class="form-label "><b>Isi Disposisi</b></label>
+                    <label for="isiDisposisi" class="form-label "><b>Isi </b></label>
                     <input type="teks" class="form-control " id="isiDisposisi" name="isiDisposisi" autofocus value="<?= (old('isiDisposisi')) ? old('isiDisposisi') : $disposisisuratmasuk['isiDisposisi'] ?>">
                     <div class="isi">
                         <table class="isi">

@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Form Tambah Surat Masuk</h2>
+            <h2>Form Tambah Surat Legalisir</h2>
 
             <form action="/suratlegalisirresepsionis/save" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
-                    <label for="nama" class="form-label"><b>Nama</b></label>
+                    <label for="nama" class="form-label"><b>Nama Siswa</b></label>
                     <input type="teks" class="form-control" id="nama" name="nama" required autofocus value="<?= old('nama'); ?>">
 
                 </div>

@@ -17,7 +17,7 @@
                 <form action="pengguna" method="post">
                     <div class="input-group mb-3">
                         <h2 style="padding-right: 530px;">Daftar Pengguna</h2>
-                        <input type="text" class="form-control" placeholder="Masukkan Keyword Pencarian.." name="keyword">
+                        <input type="text" class="form-control" placeholder="Masukkan Keyword " name="keyword">
                         <button class="btn btn-outline-secondary btn-warning" type="submit" name="submit">Cari</button>
                     </div>
                 </form>
@@ -28,9 +28,9 @@
                     <thead>
                         <tr>
                             <th scope="col" style="width: 4%;">No</th>
+                            <th scope="col" style="width: 20%;">Nama</th>
                             <th scope="col" style="width: 20%;">Username</th>
                             <th scope="col" style="width: 20%;">Password</th>
-                            <th scope="col" style="width: 20%;">Nama</th>
                             <th scope="col" style="width: 20%;">Level Akses</th>
                             <th scope="col" style="width: 5%;">Aksi</th>
                         </tr>
@@ -40,9 +40,9 @@
                         <?php foreach ($pengguna as $pg) : ?>
                             <tr>
                                 <th style="text-align:center; " scope="row"><?= $i++; ?></th>
+                                <td><?= $pg['nama']; ?></td>
                                 <td><?= $pg['username']; ?></td>
                                 <td><?= $pg['password']; ?></td>
-                                <td><?= $pg['nama']; ?></td>
                                 <td><?= $pg['levelakses']; ?></td>
                                 <td>
                                     <div class="aksi" style="padding-bottom:5px;" style="text-align:center">

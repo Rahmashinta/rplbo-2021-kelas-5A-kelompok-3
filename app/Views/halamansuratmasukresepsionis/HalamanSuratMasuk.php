@@ -21,7 +21,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Asal Surat</th>
                             <th scope="col">Tanggal Surat</th>
-                            <th scope="col">Perihal</th>
+                            <th scope="col">Perihal Surat</th>
                         </tr>
                     </thead>
                     <tbody>
