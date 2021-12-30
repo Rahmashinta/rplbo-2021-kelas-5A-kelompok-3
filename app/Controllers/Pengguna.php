@@ -36,8 +36,7 @@ class Pengguna extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'validation' => \Config\Services::validation()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
         return view('halamanpengelolaanpengguna/FormTambahPengguna', $data);
     }
@@ -58,7 +57,6 @@ class Pengguna extends BaseController
 
     public function delete($id)
     {
-
         $this->penggunaModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/pengguna');
@@ -68,7 +66,6 @@ class Pengguna extends BaseController
     {
         $data = [
             'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'validation' => \Config\Services::validation(),
             'pengguna' => $this->penggunaModel->getPenggunaById($id)
         ];
         return view('halamanpengelolaanpengguna/FormEditPengguna', $data);

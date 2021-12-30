@@ -35,8 +35,7 @@ class SuratKeluar extends BaseController
     {
         // session();
         $data = [
-            'title' => 'Form Tambah Data Surat Keluar',
-            'validation' => \Config\Services::validation()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
         return view('halamansuratkeluar/FormTambahSuratKeluar', $data);
     }
@@ -80,7 +79,6 @@ class SuratKeluar extends BaseController
     {
         $data = [
             'title' => 'Form Ubah Data Surat Masuk',
-            'validation' => \Config\Services::validation(),
             'suratkeluar' => $this->suratKeluarModel->getSuratKeluarById($id)
         ];
         return view('halamansuratkeluar/FormEditSuratKeluar', $data);
@@ -114,21 +112,5 @@ class SuratKeluar extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
 
         return redirect()->to('suratkeluar');
-    }
-
-    public function cari()
-    {
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $suratkeluar = $this->suratKeluarModel->search($keyword);
-        } else {
-            $suratkeluar = $this->suratKeluarModel;
-        }
-
-        $data = [
-            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
-            'suratkeluar' => $suratkeluar->paginate(6, 'suratkeluar'),
-        ];
-        return view('halamansuratkeluar/HalamanSuratKeluar', $data);
     }
 }

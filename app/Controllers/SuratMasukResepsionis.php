@@ -28,8 +28,7 @@ class SuratMasukResepsionis extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Form Tambah Data Surat Masuk',
-            'validation' => \Config\Services::validation()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
         return view('halamansuratmasukresepsionis/FormTambahSuratMasuk', $data);
     }

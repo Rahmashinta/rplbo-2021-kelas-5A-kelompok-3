@@ -27,10 +27,8 @@ class SuratLegalisirResepsionis extends BaseController
 
     public function create()
     {
-        // session();
         $data = [
-            'title' => 'Form Tambah Data Surat Legalisir',
-            'validation' => \Config\Services::validation()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
         return view('halamansuratlegalisirresepsionis/FormTambahSuratLegalisir', $data);
     }

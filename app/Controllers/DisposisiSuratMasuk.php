@@ -14,14 +14,6 @@ class DisposisiSuratMasuk extends BaseController
     }
     public function index()
     {
-        // $currentPage = $this->request->getVar('page_disposisisuratmasuk') ? $this->request->getVar('page_disposisisuratmasuk') : 1;
-        // $data = [
-        //     'title' => 'Disposisi Surat Masuk',
-        //     'disposisisuratmasuk' => $this->disposisiSuratMasukModel->paginate(4, 'disposisisuratmasuk'),
-        //     'pager' => $this->disposisiSuratMasukModel->pager,
-        //     'currentPage' => $currentPage
-        // ];
-        // return view('halamandisposisisuratmasuk/HalamanDisposisiSuratMasuk', $data);
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
@@ -44,8 +36,7 @@ class DisposisiSuratMasuk extends BaseController
     {
         // session();
         $data = [
-            'title' => 'Form Tambah Data Disposisi Surat Masuk',
-            'validation' => \Config\Services::validation()
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat'
         ];
         return view('halamandisposisisuratmasuk/FormTambahDisposisiSuratMasuk', $data);
     }
@@ -72,7 +63,6 @@ class DisposisiSuratMasuk extends BaseController
 
     public function delete($id)
     {
-
         $this->disposisiSuratMasukModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/disposisisuratmasuk');
@@ -81,8 +71,7 @@ class DisposisiSuratMasuk extends BaseController
     public function edit($id)
     {
         $data = [
-            'title' => 'Form Ubah Data Disposisi Surat Masuk',
-            'validation' => \Config\Services::validation(),
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
             'disposisisuratmasuk' => $this->disposisiSuratMasukModel->getDisposisiSuratMasukById($id)
         ];
         return view('halamandisposisisuratmasuk/FormEditDisposisiSuratMasuk', $data);

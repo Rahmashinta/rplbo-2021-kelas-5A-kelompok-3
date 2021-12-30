@@ -51,8 +51,7 @@ class SuratMasukStaf extends BaseController
     public function edit($id)
     {
         $data = [
-            'title' => 'Form Ubah Data Surat Masuk',
-            'validation' => \Config\Services::validation(),
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
             'suratmasuk' => $this->suratMasukModel->getSuratMasukById($id)
         ];
         return view('halamansuratmasukstaf/FormEditSuratMasuk', $data);

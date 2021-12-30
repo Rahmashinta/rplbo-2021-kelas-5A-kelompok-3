@@ -38,6 +38,7 @@ class SuratLegalisirStaf extends BaseController
         //cari file berdasarkan id
         $suratLegalisir = $this->suratLegalisirModel->find($id);
 
+        //hapus file lama
         unlink('file/suratlegalisir/' . $suratLegalisir['fileSurat']);
 
         $this->suratLegalisirModel->delete($id);
@@ -48,8 +49,7 @@ class SuratLegalisirStaf extends BaseController
     public function edit($id)
     {
         $data = [
-            'title' => 'Form Ubah Data Surat Masuk',
-            'validation' => \Config\Services::validation(),
+            'title' => 'Sistem Informasi Pelayanan Surat Menyurat',
             'suratlegalisir' => $this->suratLegalisirModel->getSuratLegalisirById($id)
         ];
         return view('halamansuratlegalisirstaf/FormEditSuratLegalisir', $data);
